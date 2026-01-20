@@ -2,12 +2,18 @@ const express = require('express');
 const cors = require('cors');
 const sqlite3 = require('sqlite3').verbose();
 const Fuse = require('fuse.js');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from React build
+if (process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT) {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+}
 
 // Health check endpoint for monitoring
 app.get('/health', (req, res) => {
@@ -247,6 +253,13 @@ app.get('/list', (req, res) => {
     }
   });
 });
+
+// Serve React app for all other routes (SPA catch-all)
+if (process.env.NODE_ENV === 'production' || process.env.RAILWAY_ENVIRONMENT) {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

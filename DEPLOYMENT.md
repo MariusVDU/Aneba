@@ -1,8 +1,47 @@
 # Deployment Guide - Ameba Game Store
 
-## 🚀 Free Hosting with Render
+## 🚀 Free Hosting with Railway (Recommended)
 
-This application is configured for free deployment on [Render](https://render.com).
+This application is configured for free deployment on [Railway.app](https://railway.app) - **NO credit card required!**
+
+### Prerequisites
+
+1. **GitHub account** - Your code should be on GitHub (already done ✅)
+2. **Railway account** - Sign up at https://railway.app (free)
+
+### Deployment Steps
+
+1. **Go to https://railway.app**
+2. Click "Start a New Project"
+3. Select "Deploy from GitHub repo"
+4. Choose your `Aneba` repository
+5. Railway will automatically:
+   - Detect Node.js project
+   - Install dependencies
+   - Build frontend (`npm run build`)
+   - Start server with `npm run start:prod`
+6. **Done!** Your app will be live at: `https://ameba-production.up.railway.app`
+
+### Features on Railway Free Tier
+
+- ✅ **$5 credit per month** (lasts ~500 hours of uptime)
+- ✅ **No credit card** required
+- ✅ Automatic HTTPS/SSL
+- ✅ Auto-deploy on git push
+- ✅ Environment variables support
+- ✅ Custom domains (optional)
+
+### Monitoring
+
+- Railway Dashboard shows: logs, metrics, deployments
+- Your app URL: Check "Deployments" tab
+- Logs: Real-time in Railway dashboard
+
+---
+
+## Alternative: Render (Requires Credit Card)
+
+This application is also configured for [Render](https://render.com).
 
 ### Prerequisites
 
