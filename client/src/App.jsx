@@ -3,9 +3,11 @@ import './App.css';
 import SearchBar from './components/SearchBar.jsx';
 import GameCard from './components/GameCard.jsx';
 
-// API URL - uses relative path in production, localhost in dev
+// API URL - for Railway deployment use backend service URL
 const API_URL = import.meta.env.VITE_API_URL || 
-  (window.location.hostname === 'localhost' ? 'http://localhost:5000' : '');
+  (window.location.hostname === 'localhost' 
+    ? 'http://localhost:5000' 
+    : 'https://ameba-backend-production.up.railway.app');
 
 function App() {
   const [games, setGames] = useState([]);
